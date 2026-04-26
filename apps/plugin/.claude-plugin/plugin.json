@@ -1,0 +1,16 @@
+{
+  "name": "claude-code-inspect",
+  "version": "0.1.0",
+  "description": "MCP bridge plugin for Claude Code Inspect browser extension",
+  "mcpServers": {
+    "claude-code-inspect": {
+      "command": "npx",
+      "args": ["tsx", "${CLAUDE_PLUGIN_ROOT}/server.ts"]
+    }
+  },
+  "channels": [
+    {
+      "server": "claude-code-inspect"
+    }
+  ]
+}

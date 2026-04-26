@@ -1,0 +1,9 @@
+{
+  "mcpServers": {
+    "claude-code-inspect": {
+      "command": "npx",
+      "args": ["tsx", "./server.ts"],
+      "cwd": "."
+    }
+  }
+}

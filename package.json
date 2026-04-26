@@ -1,0 +1,26 @@
+{
+  "name": "claude-code-inspect",
+  "description": "A browser extension that lets you inspect any page element and ask Claude Code questions about it, directly from your browser.",
+  "private": true,
+  "workspaces": [
+    "apps/extension",
+    "apps/plugin",
+    "apps/demo"
+  ],
+  "scripts": {
+    "version": "tsx scripts/bump-version.ts",
+    "zip": "tsx scripts/zip-extension.ts",
+    "build:zip": "npm run build && tsx scripts/zip-extension.ts",
+    "build": "npm run build --workspace=apps/extension",
+    "dev": "npm run dev --workspace=apps/extension",
+    "clean": "npm run clean --workspace=apps/extension",
+    "typecheck": "npm run typecheck --workspace=apps",
+    "lint": "npm run lint --workspace=apps",
+    "lint:fix": "npm run lint:fix --workspace=apps"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "eslint-plugin-import": "^2.32.0",
+    "tsx": "^4.19.0"
+  }
+}

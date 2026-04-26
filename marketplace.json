@@ -1,0 +1,14 @@
+{
+  "name": "claude-code-inspect",
+  "owner": { "name": "digital-flowers" },
+  "plugins": [
+    {
+      "name": "claude-code-inspect",
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/digital-flowers/claude-code-inspect.git",
+        "path": "apps/plugin"
+      }
+    }
+  ]
+}
