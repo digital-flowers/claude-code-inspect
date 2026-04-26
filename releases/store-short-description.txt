@@ -1,0 +1,1 @@
+Click any element and send its full context (selector, component, screenshot) straight to your active Claude Code session.

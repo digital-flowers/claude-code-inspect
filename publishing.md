@@ -56,7 +56,7 @@
 - [ ] Create new item and upload zip from `releases/`
 - [ ] Fill in the store listing:
   - **Name**: Claude Code Inspect
-  - **Summary**: (132 chars max) Click any element, ask Claude Code. Get instant answers with full element context — selector, component, screenshot.
+  - **Summary**: (132 chars max) Click any element and send its (full context, selector, component, screenshot) straight to your active Claude Code session.
   - **Description**: (see marketing.md for full copy)
   - **Category**: Developer Tools
   - **Language**: English

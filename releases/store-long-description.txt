@@ -1,0 +1,19 @@
+Claude Code Inspect connects your browser to Claude Code, giving Claude instant full context about any element you click — no copy-pasting required.
+
+HOW IT WORKS
+Click the Inspect button, then click any element on the page. Claude receives the element's CSS selector, dimensions, React component name, source file, and a screenshot automatically. Type your question and it lands directly in your active Claude Code session.
+
+WHAT YOU GET
+- Zero copy-pasting: Claude sees exactly what you are looking at
+- React-aware: knows the component name and source file, not just the DOM
+- Token-efficient: screenshots are delivered natively to Claude's vision encoder only when needed, never bloating your context
+- Works on any website: not just apps you own
+
+REQUIREMENTS
+- Claude Code (claude.ai/code) installed and running
+- Node.js 18+ for the companion plugin
+
+WHY IT IS DIFFERENT
+Most AI coding tools make you describe your UI in words. Claude Code Inspect makes that unnecessary. One click gives Claude everything — selector, dimensions, component, source file, and screenshot — and Claude jumps straight to the solution.
+
+Zero tokens wasted. Full context. Instant answers.

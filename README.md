@@ -15,21 +15,21 @@
 [![License: ELv2](https://img.shields.io/badge/License-Elastic_v2-blue.svg)](LICENSE)
 [![Version](https://img.shields.io/badge/version-0.1.0-brightgreen.svg)](package.json)
 
-A browser extension that lets you inspect any page element and ask [Claude Code](https://claude.ai/code) questions about it, directly from your browser.
+A browser extension that sends full element context (selector, dimensions, React component name, source file, and screenshot) straight to your active [Claude Code](https://claude.ai/code) session.
 
-Instead of manually copying selectors, pasting screenshots, describing layouts, and explaining which component you mean, you click once and Claude gets everything automatically: the element's selector, dimensions, React component name, source file, domain name, and a screenshot. No copy-pasting, no context switching, no wasted tokens describing what Claude could just see.
+Instead of manually copying selectors, pasting screenshots, and describing layouts, you click once and Claude receives everything automatically. No copy-pasting, no context switching, no wasted tokens describing what Claude could just see.
 
 This means faster fixes, more precise answers, and significantly fewer tokens spent on setup. Claude jumps straight to the solution.
 
 ### Token-efficient vision
 
-Screenshots are never inlined into the conversation as text. Instead, the plugin stores them server-side and tells Claude a screenshot is available for a given message. Claude calls the `get_screenshot` MCP tool only when it actually needs to look — at which point the image is delivered as a native image block to Claude's vision encoder, not as a base64 string embedded in the prompt.
+Screenshots are never inlined into the conversation as text. Instead, the plugin stores them server-side and tells Claude a screenshot is available for a given message. Claude calls the `get_screenshot` MCP tool only when it actually needs to look, at which point the image is delivered as a native image block to Claude's vision encoder, not as a base64 string embedded in the prompt.
 
 This means:
 
 - **Zero screenshot tokens** when Claude can answer from the selector and component name alone
-- **Vision tokens only when needed** — far cheaper per unit of visual information than text tokens
-- **No context bloat** — the conversation stays clean regardless of how many elements you inspect
+- **Vision tokens only when needed** (far cheaper per unit of visual information than text tokens)
+- **No context bloat** (the conversation stays clean regardless of how many elements you inspect)
 
 ## How to use
 
@@ -210,8 +210,8 @@ npm run lint:fix     # auto-fix
 
 The plugin (`apps/plugin/server.ts`) is a Node process that does two things simultaneously:
 
-- **MCP server over stdio** — Claude Code spawns it as a subprocess via `.claude-plugin/plugin.json` and communicates over stdin/stdout. The `claude/channel` experimental capability tells Claude Code to register a notification listener for incoming events.
-- **HTTP server on `localhost:9999`** — accepts `POST /message` from the extension and forwards to Claude Code via `notifications/claude/channel`; exposes `GET /health` for the extension's connection polling.
+- **MCP server over stdio**: Claude Code spawns it as a subprocess via `.claude-plugin/plugin.json` and communicates over stdin/stdout. The `claude/channel` experimental capability tells Claude Code to register a notification listener for incoming events.
+- **HTTP server on `localhost:9999`**: accepts `POST /message` from the extension and forwards to Claude Code via `notifications/claude/channel`; exposes `GET /health` for the extension's connection polling.
 
 The port defaults to `9999` and can be changed via the `BRIDGE_PORT` environment variable.
 
@@ -222,11 +222,11 @@ When a message arrives with a screenshot, the plugin:
 1. Strips the `data:` URI prefix and stores the raw base64 in an in-memory map keyed by `message_id`
 2. Sends a channel notification with a text hint instead of the image data:
    ```
-   screenshot: available — call get_screenshot('<message_id>') to view it
+   screenshot: available, call get_screenshot('<message_id>') to view it
    ```
 3. Exposes a `get_screenshot` MCP tool that returns a native `image` content block when called
 
-Claude's vision encoder receives the image directly — it is never serialized into the text context. Screenshots that Claude doesn't need (answerable from selector/component info alone) cost zero tokens.
+Claude's vision encoder receives the image directly. It is never serialized into the text context. Screenshots that Claude doesn't need (answerable from selector/component info alone) cost zero tokens.
 
 Channel notifications delivered to Claude Code look like:
 
@@ -239,7 +239,7 @@ Channel notifications delivered to Claude Code look like:
   html: #root > main > .actions > button
   react: <SubmitButton />
   src: src/components/SubmitButton.tsx:42
-  screenshot: available — call get_screenshot('abc-123') to view it
+  screenshot: available, call get_screenshot('abc-123') to view it
 </channel>
 ```
 
