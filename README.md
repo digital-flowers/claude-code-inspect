@@ -13,7 +13,7 @@
 </p>
 
 [![License: ELv2](https://img.shields.io/badge/License-Elastic_v2-blue.svg)](LICENSE)
-[![Version](https://img.shields.io/badge/version-0.1.0-brightgreen.svg)](package.json)
+[![Version](https://img.shields.io/badge/version-1.0.0-brightgreen.svg)](package.json)
 
 A browser extension that sends full element context (selector, dimensions, React component name, source file, and screenshot) straight to your active [Claude Code](https://claude.ai/code) session.
 
