@@ -5,7 +5,6 @@
   "description": "Click any element on any page and prompt Claude Code about it — instantly, with full context.",
   "permissions": [
     "activeTab",
-    "scripting",
     "contextMenus",
     "storage",
     "tabs",
