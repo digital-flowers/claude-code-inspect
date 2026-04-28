@@ -1,7 +1,7 @@
 Claude Code Inspect connects your browser to Claude Code, giving Claude instant full context about any element you click — no copy-pasting required.
 
 HOW IT WORKS
-Click the Inspect button, then click any element on the page. Claude receives the element's CSS selector, dimensions, React component name, source file, and a screenshot automatically. Type your question and it lands directly in your active Claude Code session.
+Click the Inspect button, then click any element on the page. Claude receives the element's CSS selector, dimensions, React component name, source file, and a screenshot automatically. Type your question, and it lands directly in your active Claude Code session.
 
 WHAT YOU GET
 - Zero copy-pasting: Claude sees exactly what you are looking at
