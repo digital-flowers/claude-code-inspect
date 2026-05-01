@@ -17,17 +17,44 @@ interface Props {
   inline?: boolean;
 }
 
-const CONNECT_COMMAND =
-  'claude --channels plugin:claude-code-inspect@github/digital-flowers/claude-code-inspect';
+const INSTALL_COMMAND = '/plugin install claude-code-inspect@claude-plugins-official';
 
-export const ChannelStatus = ({ status, lastError, inline = false }: Props) => {
+const CONNECT_COMMAND = 'claude --channels plugin:claude-code-inspect@claude-plugins-official';
+
+const CopyBlock = ({ label, value }: { label: ReactNode; value: string }) => {
   const [copied, setCopied] = useState(false);
-  const copyCommand = () => {
-    void navigator.clipboard.writeText(CONNECT_COMMAND);
+  const copy = () => {
+    void navigator.clipboard.writeText(value);
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
   };
+  return (
+    <div className="flex flex-col gap-1">
+      <span className="text-[11px] text-muted-foreground">{label}</span>
+      <InputGroup className="backdrop-blur-xs">
+        <InputGroupTextarea
+          readOnly
+          value={value}
+          rows={2}
+          className="font-mono text-[10px] cursor-text select-all resize-none"
+        />
+        <InputGroupAddon align="block-end" className="justify-end pt-0">
+          <InputGroupButton
+            onClick={copy}
+            title="Copy command"
+            size="sm"
+            className="text-xs font-medium active:translate-y-0!"
+          >
+            {copied ? <Check /> : <Copy />}
+            {copied ? 'Copied!' : 'Copy'}
+          </InputGroupButton>
+        </InputGroupAddon>
+      </InputGroup>
+    </div>
+  );
+};
 
+export const ChannelStatus = ({ status, lastError, inline = false }: Props) => {
   const wrapper = (children: ReactNode) =>
     inline ? <div className="w-full">{children}</div> : <div className="px-2 pb-1">{children}</div>;
 
@@ -46,27 +73,26 @@ export const ChannelStatus = ({ status, lastError, inline = false }: Props) => {
     return wrapper(
       <div className="flex w-full flex-col gap-3">
         <span className="text-muted-foreground font-medium">
-          Start Claude Code with the plugin to connect:
+          Connect Claude Code to this extension:
         </span>
-        <InputGroup className={'backdrop-blur-xs'}>
-          <InputGroupTextarea
-            readOnly
-            value={CONNECT_COMMAND}
-            rows={3}
-            className="font-mono text-[10px] cursor-text select-all resize-none"
-          />
-          <InputGroupAddon align="block-end" className="justify-end pt-0">
-            <InputGroupButton
-              onClick={copyCommand}
-              title="Copy command"
-              size="sm"
-              className={'text-xs font-medium active:translate-y-0!'}
-            >
-              {copied ? <Check /> : <Copy />}
-              {copied ? 'Copied!' : 'Copy'}
-            </InputGroupButton>
-          </InputGroupAddon>
-        </InputGroup>
+        <CopyBlock
+          label={
+            <>
+              <span className="font-semibold text-foreground">Step 1 (one-time only)</span> - Run
+              inside Claude Code
+            </>
+          }
+          value={INSTALL_COMMAND}
+        />
+        <CopyBlock
+          label={
+            <>
+              <span className="font-semibold text-foreground">Step 2</span> - Start Claude Code with
+              the extension connected
+            </>
+          }
+          value={CONNECT_COMMAND}
+        />
       </div>,
     );
   }
