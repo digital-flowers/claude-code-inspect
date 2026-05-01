@@ -34,17 +34,21 @@ This means:
 ## How to use
 
 1. Install the extension from the Chrome Web Store _(link coming soon)_
-2. Start Claude Code with the plugin:
-   ```bash
-   claude --channels plugin:claude-code-inspect@github/digital-flowers/claude-code-inspect
+2. Install the plugin inside Claude Code — **one-time only**:
    ```
-3. Open any webpage, click the **Claude Code Inspect** icon in your toolbar
-4. Click **Inspect**, then click any element on the page
-5. Type your question in the chat box and press **Enter**
+   /plugin install claude-code-inspect@claude-plugins-official
+   ```
+3. Start Claude Code with the extension connected:
+   ```bash
+   claude --channels plugin:claude-code-inspect@claude-plugins-official
+   ```
+4. Open any webpage, click the **Claude Code Inspect** icon in your toolbar
+5. Click **Inspect**, then click any element on the page
+6. Type your question in the chat box and press **Enter**
 
 Claude Code receives your question with full element context (selector, dimensions, React component name, source file, domain name, and a screenshot) and responds directly in the terminal.
 
-> If the extension shows a red "Disconnected" indicator in the header, copy the command shown and run it in your terminal.
+> If the extension shows a red "Disconnected" indicator, it will show both commands to copy.
 
 ---
 
@@ -93,13 +97,21 @@ claude-code-inspect/
 
 Install from the Chrome Web Store _(link coming soon)_.
 
-### 2. Start Claude Code with the plugin
+### 2. Install the plugin (one-time only)
 
-```bash
-claude --channels plugin:claude-code-inspect@github/digital-flowers/claude-code-inspect
+Run this inside Claude Code:
+
+```
+/plugin install claude-code-inspect@claude-plugins-official
 ```
 
-Claude Code fetches the plugin from GitHub, spawns `server.ts` as a subprocess, and the HTTP listener starts automatically on port 9999. When the extension detects it, the header turns green.
+### 3. Start Claude Code with the extension connected
+
+```bash
+claude --channels plugin:claude-code-inspect@claude-plugins-official
+```
+
+Claude Code spawns `server.ts` as a subprocess and the HTTP listener starts automatically on port 9999. When the extension detects it, the header turns green.
 
 ---
 
