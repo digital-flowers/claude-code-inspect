@@ -3,16 +3,8 @@
   "name": "Claude Code Inspect",
   "version": "1.0.0",
   "description": "Click any element on any page and prompt Claude Code about it — instantly, with full context.",
-  "permissions": [
-    "activeTab",
-    "contextMenus",
-    "storage",
-    "tabs",
-    "sidePanel"
-  ],
-  "host_permissions": [
-    "<all_urls>"
-  ],
+  "permissions": ["contextMenus", "tabs", "sidePanel"],
+  "host_permissions": ["<all_urls>"],
   "background": {
     "service_worker": "service-worker.js",
     "type": "module"
@@ -22,23 +14,15 @@
   },
   "content_scripts": [
     {
-      "matches": [
-        "<all_urls>"
-      ],
-      "js": [
-        "content-react-bridge.js"
-      ],
+      "matches": ["<all_urls>"],
+      "js": ["content-react-bridge.js"],
       "run_at": "document_idle",
       "all_frames": false,
       "world": "MAIN"
     },
     {
-      "matches": [
-        "<all_urls>"
-      ],
-      "js": [
-        "content-inspector.js"
-      ],
+      "matches": ["<all_urls>"],
+      "js": ["content-inspector.js"],
       "run_at": "document_idle",
       "all_frames": false
     }

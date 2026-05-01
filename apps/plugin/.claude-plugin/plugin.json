@@ -2,6 +2,11 @@
   "name": "claude-code-inspect",
   "version": "0.1.0",
   "description": "MCP bridge plugin for Claude Code Inspect browser extension",
+  "author": {
+    "name": "Fareed Alnamrouti",
+    "email": "fareed.bizness@gmail.com",
+    "url": "https://github.com/digital-flowers"
+  },
   "mcpServers": {
     "claude-code-inspect": {
       "command": "npx",
