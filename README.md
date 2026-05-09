@@ -33,7 +33,7 @@ This means:
 
 ## How to use
 
-1. Install the extension from the Chrome Web Store _(link coming soon)_
+1. Install the extension from the [Chrome Web Store](https://chromewebstore.google.com/detail/claude-code-inspect/nojgfbodmchkjjognolijoifjkcldmel)
 2. Install the plugin inside Claude Code — **one-time only**:
    ```
    /plugin install claude-code-inspect@claude-plugins-official
@@ -95,7 +95,7 @@ claude-code-inspect/
 
 ### 1. Install the Chrome extension
 
-Install from the Chrome Web Store _(link coming soon)_.
+Install from the [Chrome Web Store](https://chromewebstore.google.com/detail/claude-code-inspect/nojgfbodmchkjjognolijoifjkcldmel).
 
 ### 2. Install the plugin (one-time only)
 
