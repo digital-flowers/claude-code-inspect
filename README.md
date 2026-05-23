@@ -9,7 +9,7 @@
 </p>
 
 <p align="center">
-  <video src="https://github.com/user-attachments/assets/acc7655e-6317-44e0-9b70-a35fabfe6cb3" autoplay loop muted playsinline></video>
+  <video src=".github/demo-compressed.mp4" autoplay loop muted playsinline></video>
 </p>
 
 [![License: ELv2](https://img.shields.io/badge/License-Elastic_v2-blue.svg)](LICENSE)
